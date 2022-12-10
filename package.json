@@ -1,7 +1,7 @@
 {
-  "name": "tinro",
-  "version": "0.6.12",
-  "description": "tinro is a tiny declarative router for Svelte",
+  "name": "@baileyherbert/tinro",
+  "version": "1.0.0",
+  "description": "Tiny declarative router for Svelte (fork with fixes)",
   "main": "dist/tinro.js",
   "module": "dist/tinro.es.js",
   "svelte": "cmp/index.js",
@@ -15,19 +15,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexxNB/tinro.git"
+    "url": "git+https://github.com/baileyherbert/tinro.git"
   },
   "keywords": [
     "svelte-router",
     "router",
-    "svelte"
+    "svelte",
+    "tinro"
   ],
   "author": "Alexey Schebelev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlexxNB/tinro/issues"
+    "url": "https://github.com/baileyherbert/tinro/issues"
   },
-  "homepage": "https://github.com/AlexxNB/tinro#readme",
+  "homepage": "https://github.com/baileyherbert/tinro#readme",
   "devDependencies": {
     "derver": "^0.5.3",
     "esbuild": "^0.14.18",
