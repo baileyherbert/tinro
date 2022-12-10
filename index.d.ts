@@ -1,3 +1,5 @@
+import type { SvelteComponentTyped } from "svelte";
+
 interface TinroRoute {
     url: string
     from: string
@@ -32,24 +34,24 @@ interface TinroRouterModeSwitcher {
 }
 
 interface TinroRouterLocationHash {
-  /** Get current hash value*/ 
+  /** Get current hash value*/
   get(): string
-  /** Set current hash value*/ 
+  /** Set current hash value*/
   set(value:string): void
-  /** Clear current hash value*/ 
+  /** Clear current hash value*/
   clear(): void
 }
 
 interface TinroRouterLocationQuery {
-  /** Get the query object or a value from it by property name */ 
+  /** Get the query object or a value from it by property name */
   get(name?:string): Record<string, string>|string
-  /** Update or add a property in the query object */ 
+  /** Update or add a property in the query object */
   set(name:string,value:string|number): void
-  /** Delete a property from the query object */ 
+  /** Delete a property from the query object */
   delete(name:string): void
-  /** Replace value of the query object */ 
+  /** Replace value of the query object */
   replace(value: Record<string, string>): void
-  /** Clear the query object */ 
+  /** Clear the query object */
   clear(): void
 }
 
@@ -81,14 +83,46 @@ declare interface TinroRouter {
 export const active: any
 export function meta(): TinroRouteMeta
 export const router: TinroRouter
-export class Route {
+
+type RouteArgs = {
+    /**
+    * Exact o relative path of the route
+    * @default "/*"
+    */
+    path?: string;
+
+    /**
+     * Is route fallback
+     * @default false
+     */
+    fallback?: boolean;
+
+    /**
+     * Redirect route to the specified path
+     */
+    redirect?: string;
+
+    /**
+     * Will be show only first matched with URL nested route
+     * @default false
+     */
+    firstmatch?: boolean;
+
+    /**
+     * Name of the route to use in breadcrumbs
+     * @default null
+     */
+    breadcrumb?: string;
+}
+
+export class Route extends SvelteComponentTyped<RouteArgs> {
     $$prop_def: {
       /**
        * Exact o relative path of the route
        * @default "/*"
        */
       path?: string;
-  
+
       /**
        * Is route fallback
        * @default false
@@ -112,7 +146,7 @@ export class Route {
        */
       breadcrumb?: string;
     };
-  
+
     $$slot_def: { default: {
       /** Current meta for the route */
       meta: TinroRouteMeta
